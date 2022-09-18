@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"path/filepath"
-	"runtime"
 	"strings"
 )
 
@@ -27,8 +26,7 @@ func GetConfig() (*Config, error) {
 }
 
 func parseConfig() (*Config, error) {
-	currentDir := getCurrentDir()
-	path := filepath.Join(currentDir, "..", "..", ".env")
+	path := filepath.Join(".env")
 	data, err := ioutil.ReadFile(path)
 	if err != nil {
 		return nil, err
@@ -53,9 +51,4 @@ func parseConfig() (*Config, error) {
 	}
 
 	return config, nil
-}
-
-func getCurrentDir() string {
-	_, dir, _, _ := runtime.Caller(0)
-	return filepath.Dir(dir)
 }
