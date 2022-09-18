@@ -7,7 +7,7 @@ import (
 	"net/http"
 
 	"github.com/AleksandrCherepanov/go_telegram/pkg/telegram"
-	"honnef.co/go/tools/config"
+	"github.com/AleksandrCherepanov/go_telegram/pkg/telegram/config"
 )
 
 type TelegramHttpClient struct {

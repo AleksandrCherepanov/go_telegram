@@ -4,7 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"tg-bot/pkg/config"
+
+	"github.com/AleksandrCherepanov/go_telegram/pkg/telegram/config"
 )
 
 type TelegramResponse struct {
