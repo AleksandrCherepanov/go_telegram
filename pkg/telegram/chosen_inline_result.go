@@ -1,6 +1,6 @@
 package telegram
 
-import "tg-bot/pkg/telegram/user"
+import "github.com/AleksandrCherepanov/go_telegram/pkg/telegram/user"
 
 type ChosenInlineResult struct {
 	ResultId        string    `json:"result_id"`

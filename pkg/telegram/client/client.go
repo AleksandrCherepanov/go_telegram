@@ -5,8 +5,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"tg-bot/pkg/config"
-	"tg-bot/pkg/telegram"
+
+	"github.com/AleksandrCherepanov/go_telegram/pkg/telegram"
+	"honnef.co/go/tools/config"
 )
 
 type TelegramHttpClient struct {

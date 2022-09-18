@@ -2,9 +2,10 @@ package telegram
 
 import (
 	"fmt"
-	"tg-bot/pkg/telegram/passport"
-	"tg-bot/pkg/telegram/payment"
-	"tg-bot/pkg/telegram/user"
+
+	"github.com/AleksandrCherepanov/go_telegram/pkg/telegram/passport"
+	"github.com/AleksandrCherepanov/go_telegram/pkg/telegram/payment"
+	"github.com/AleksandrCherepanov/go_telegram/pkg/telegram/user"
 )
 
 type Message struct {
