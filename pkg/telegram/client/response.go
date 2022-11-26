@@ -4,8 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-
-	"github.com/AleksandrCherepanov/go_telegram/pkg/telegram/config"
 )
 
 type TelegramResponse struct {
@@ -33,12 +31,7 @@ func (tr TelegramResponse) Error() string {
 }
 
 func (tr *TelegramResponse) Send() (interface{}, error) {
-	cfg, err := config.GetConfig()
-	if err != nil {
-		return nil, err
-	}
-
-	tgClient := NewClient(cfg)
+	tgClient := NewClient()
 	res, err := tgClient.SendMessage(tr.ChatId, tr.Text)
 	if err != nil {
 		return nil, err

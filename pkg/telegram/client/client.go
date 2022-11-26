@@ -5,22 +5,20 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"os"
 
 	"github.com/AleksandrCherepanov/go_telegram/pkg/telegram"
-	"github.com/AleksandrCherepanov/go_telegram/pkg/telegram/config"
 )
 
 type TelegramHttpClient struct {
 	client *http.Client
 	host   string
-	config *config.Config
 }
 
-func NewClient(cfg *config.Config) *TelegramHttpClient {
+func NewClient() *TelegramHttpClient {
 	telegramHttpClient := &TelegramHttpClient{}
 	telegramHttpClient.host = "https://api.telegram.org"
 	telegramHttpClient.client = http.DefaultClient
-	telegramHttpClient.config = cfg
 
 	return telegramHttpClient
 }
@@ -75,9 +73,10 @@ func (thc *TelegramHttpClient) SendMessage(userId int64, text string) (*http.Res
 		return nil, err
 	}
 
+	tgToken := os.Getenv("token")
 	request, err := http.NewRequest(
 		"POST",
-		thc.host+"/bot"+thc.config.Token+"/sendMessage",
+		thc.host+"/bot"+tgToken+"/sendMessage",
 		bytes.NewBuffer(jsonMessage),
 	)
 	request.Header.Add("Content-Type", "application/json")
@@ -107,9 +106,10 @@ func (thc *TelegramHttpClient) PinMessage(
 		return nil, err
 	}
 
+	tgToken := os.Getenv("token")
 	request, err := http.NewRequest(
 		"POST",
-		thc.host+"/bot"+thc.config.Token+"/pinChatMessage",
+		thc.host+"/bot"+tgToken+"/pinChatMessage",
 		bytes.NewBuffer(jsonMessage),
 	)
 	request.Header.Add("Content-Type", "application/json")
@@ -135,9 +135,10 @@ func (thc *TelegramHttpClient) unpinAllChatMessages(chatId int64) (*http.Respons
 		return nil, err
 	}
 
+	tgToken := os.Getenv("token")
 	request, err := http.NewRequest(
 		"POST",
-		thc.host+"/bot"+thc.config.Token+"/pinChatMessage",
+		thc.host+"/bot"+tgToken+"/pinChatMessage",
 		bytes.NewBuffer(jsonMessage),
 	)
 	request.Header.Add("Content-Type", "application/json")
